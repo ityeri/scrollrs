@@ -1,0 +1,12 @@
+[package]
+name = "scrollrs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+glam = "0.30.7"
+
+
+[dev-dependencies]
+sdl2 = "0.38.0"
+clock = { git = "https://github.com/ityeri/clock.git", version = "0.1.0" }

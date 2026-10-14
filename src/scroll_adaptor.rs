@@ -4,13 +4,13 @@ use glam::DVec2;
 
 #[derive(Clone)]
 pub struct ScrollAdaptor {
-    camera: Camera,
+    pub camera: Camera,
 
-    goal_zoom: f64,
-    zoom_softness: f64,
+    pub goal_zoom: f64,
+    pub zoom_softness: f64,
 
-    screen_center: DVec2,
-    screen_radius: f64,
+    pub screen_center: DVec2,
+    pub screen_radius: f64,
 }
 
 impl ScrollAdaptor {

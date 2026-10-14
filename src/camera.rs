@@ -2,6 +2,7 @@ use glam::DVec2;
 
 use crate::projector::Projector;
 
+#[derive(Clone)]
 pub struct Camera {
     pub position: DVec2,
     pub zoom: f64,

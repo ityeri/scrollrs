@@ -2,6 +2,7 @@ use crate::camera::Camera;
 use crate::projector::Projector;
 use glam::DVec2;
 
+#[derive(Clone)]
 pub struct ScrollAdaptor {
     camera: Camera,
 
@@ -41,7 +42,7 @@ impl ScrollAdaptor {
         }
     }
     pub fn resized(
-        self,
+        &self,
         screen_width: f64,
         screen_height: f64,
 
@@ -57,16 +58,16 @@ impl ScrollAdaptor {
                 screen_height / 2.0
             }),
 
-            ..self
+            ..self.clone()
         }
     }
 
-    pub fn moved(mut self, v: DVec2) -> Self {
+    pub fn moved(&mut self, v: DVec2) -> Self {
         self.camera.position += v;
-        self
+        self.clone()
     }
 
-    pub fn updated(mut self, dt: f64) -> Self {
+    pub fn updated(&mut self, dt: f64) -> Self {
         let zoom_delta = self.goal_zoom - self.camera.zoom;
         let zoom_factor = 1.0 / self.zoom_softness * dt;
 
@@ -76,16 +77,16 @@ impl ScrollAdaptor {
             self.camera.zoom += zoom_delta;
         }
 
-        self
+        self.clone()
     }
 
-    pub fn zoom(mut self, zoom: f64) -> Self {
+    pub fn zoom(&mut self, zoom: f64) -> Self {
         self.goal_zoom *= 1.0 + zoom;
-        self
+        self.clone()
     }
-    pub fn set_zoom(mut self, zoom: f64) -> Self {
+    pub fn set_zoom(&mut self, zoom: f64) -> Self {
         self.goal_zoom = zoom;
-        self
+        self.clone()
     }
 }
 

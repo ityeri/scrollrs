@@ -3,7 +3,7 @@ use crate::projector::Projector;
 use glam::DVec2;
 
 #[derive(Clone)]
-pub struct ScrollAdaptor {
+pub struct ScrollAdapter {
     pub camera: Camera,
 
     pub goal_zoom: f64,
@@ -13,7 +13,7 @@ pub struct ScrollAdaptor {
     pub screen_radius: f64,
 }
 
-impl ScrollAdaptor {
+impl ScrollAdapter {
     pub fn new(
         screen_width: f64,
         screen_height: f64,
@@ -90,7 +90,7 @@ impl ScrollAdaptor {
     }
 }
 
-impl Projector for ScrollAdaptor {
+impl Projector for ScrollAdapter {
     fn project(&self, v: DVec2) -> DVec2 {
         let v = self.camera.project(v);
         DVec2::new(v.x, -v.y) * self.screen_radius + self.screen_center

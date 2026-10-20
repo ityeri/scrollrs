@@ -15,7 +15,7 @@ fn main() {
     let fps: f64 = 60.0;
     let mut clock = Clock::new(1.0 / fps);
     let mut adaptor =
-        scrollrs::ScrollAdaptor::new(screen_width as f64, screen_height as f64, None, None, None);
+        scrollrs::ScrollAdapter::new(screen_width as f64, screen_height as f64, None, None, None);
     let wheel_sensitivity = 0.02;
 
     let rect_position = DVec2::new(-3.0, 3.0);

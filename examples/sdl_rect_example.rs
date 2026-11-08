@@ -65,7 +65,8 @@ fn main() {
                         MouseWheelDirection::Flipped => -y,
                         _ => 0,
                     };
-                    adaptor = adaptor.zoom(amount as f64 * wheel_sensitivity);
+                    let cursor = DVec2::new(mouse_state.x() as f64, mouse_state.y() as f64);
+                    adaptor = adaptor.zoom_at(amount as f64 * wheel_sensitivity, cursor);
                 }
 
                 _ => {}
